@@ -6,14 +6,6 @@ on:
 jobs:
   send-mesage:
     runs-on: ubuntu-latest
-    # if: contains(github.event.pull_request.requested_reviewers.*.login, 'qa-airslate')
     steps:
       - name: Send message to slack
         run: echo '${{ toJson(github) }}'
-
-    #   - name: Notify slack
-    #     env:
-    #       SLACK_BOT_TOKEN: ${{ secrets.SLACK_TOKEN }}
-    #     uses: abinoda/slack-action@master
-    #     with:
-    #       args: '{\"channel\":\"${{ secrets.SLACK_REVIEW_CHANEL }}\",\"text\":\"<!subteam^S025YUHS412>\n *Review requested by:* ${{ github.actor }} \n *title:* ${{ github.event.pull_request.title }} ( ▲${{ github.event.pull_request.additions }}  ▼${{ github.event.pull_request.deletions }}) \n *url: * https://github.com/${{ github.repository }}/pull/${{ github.event.pull_request.number }} \n \"}'
