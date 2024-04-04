@@ -7,6 +7,7 @@ jobs:
   send-mesage:
     runs-on: ubuntu-latest
     steps:
-      - name: Send message
-        run: |
-          echo "${{ toJson(github.event) }}"
+      - name: Print Event Object
+        env:
+          EVENT: ${{ toJson(github.event) }}
+        run: echo "$EVENT"
