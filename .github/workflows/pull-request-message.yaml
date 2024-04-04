@@ -9,8 +9,7 @@ jobs:
     # if: contains(github.event.pull_request.requested_reviewers.*.login, 'qa-airslate')
     steps:
       - name: Send message to slack
-        run: |
-          echo '${{ toJson(github.event.pull_request) }}'
+        run: echo ${{ toJson(github.event.pull_request) }}
 
     #   - name: Notify slack
     #     env:
