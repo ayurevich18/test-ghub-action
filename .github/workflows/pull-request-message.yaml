@@ -7,7 +7,9 @@ jobs:
   send-mesage:
     runs-on: ubuntu-latest
     steps:
-      - name: Print Event Object
-        env:
-          EVENT: ${{ toJson(github.event) }}
-        run: echo "$EVENT"
+     - name: Notify slack
+       env:
+         SLACK_BOT_TOKEN: ${{secrets.TOKEN}}
+       uses: pullreminders/slack-action@master
+       with:
+         args: '{\"channel\":\"C03257AQ1S8\",\"text\":\"<!subteam^S025YUHS412>\n *Review requested by:* ${{ github.actor }} \n *title:* ${{ github.event.pull_request.title }} ( ▲${{ github.event.pull_request.additions }}  ▼${{ github.event.pull_request.deletions }}) \n *url: * https://github.com/${{ github.repository }}/pull/${{ github.event.pull_request.number }} \n \"}'
