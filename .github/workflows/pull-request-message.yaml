@@ -9,8 +9,8 @@ jobs:
     steps:
       - name: Send message
         run: |
-          echo ${{ toJson(runner) }}
-          echo ${{ github.event }}
-          echo ${{ github.event.pull_request.title }}
-          echo ${{ github.event.pull_request.additions }}
-          echo ${{ github.event.pull_request.number }}
+          echo '${{ toJson(runner) }}'
+          echo '${{ github.event }}'
+          echo '${{ github.event.pull_request.title }}'
+          echo '${{ github.event.pull_request.additions }}'
+          echo '${{ github.event.pull_request.number }}'
