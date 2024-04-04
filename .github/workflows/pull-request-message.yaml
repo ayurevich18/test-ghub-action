@@ -6,6 +6,7 @@ on:
 jobs:
   send-mesage:
     runs-on: ubuntu-latest
+    if: github.event.label.name == 'Review'
     steps:
      - name: Notify slack
        env:
