@@ -15,8 +15,16 @@ jobs:
         run: echo '${{ github.ref }}'
       - name: Set env var
         run: |
-          echo "NEW_ENV_VAR=$(data)" >> "$GITHUB_ENV"
+          echo "NEW_ENV_VAR=$(date)" >> "$GITHUB_ENV"
           echo "JOB_LEVEL_ENV=$RUNDOM" >> "$GITHUB_ENV"
+      - name: Multiline ENV VAR
+        run: |
+          DELIMETR=1234
+          echo "RANDOM JOKE<<$DELIMETR" >> "$GITHUB_ENV"
+          echo "Here is a joke:" >> "$GITHUB_ENV"
+          echo curl -s https://icanhazdadjoke.com/ >> "$GITHUB_ENV"
+          echo "" >> "$GITHUB_ENV"
+          echo "$DELIMETR" >> "$GITHUB_ENV"
       - name: Log custom env variables
         env:
           STEP_LVL_ENV: Avalible only for this step
