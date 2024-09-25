@@ -9,9 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Set CHANNEL_ALLURE_ID
-        run: echo "CHANNEL_ALLURE_ID=25486" >> $GITHUB_ENV
-
-      - name: Check CHANNEL_ALLURE_ID
-        run: |
-          echo "Value of CHANNEL_ALLURE_ID: $CHANNEL_ALLURE_ID"  
+      - name: Call Composite Action
+        uses: ./.github/workflows/actions/test/actions.yml
+        with:
+          channel_allure_id: "25486" 
