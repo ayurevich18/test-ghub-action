@@ -1,0 +1,17 @@
+name: Example Workflow
+on: 
+ workflow_dispatch:
+    inputs:
+      CHANNEL_ALLURE_ID:
+        description: 'Channel Allure ID'
+        required: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set CHANNEL_ALLURE_ID
+        run: echo "CHANNEL_ALLURE_ID=25486" >> $GITHUB_ENV
+
+      - name: Check CHANNEL_ALLURE_ID
+        run: |
+          echo "Value of CHANNEL_ALLURE_ID: $CHANNEL_ALLURE_ID"  
