@@ -1,8 +1,9 @@
 name: "My Composite Action"
 description: "A composite action to demonstrate environment variable access"
+
 inputs:
   channel_allure_id:
-    description: "The Slack channel allure ID"
+    description: "Channel Allure ID"
     required: true
 
 runs:
@@ -14,4 +15,5 @@ runs:
 
     - name: Print CHANNEL_ALLURE_ID
       shell: bash
-      run: echo "Value of CHANNEL_ALLURE_ID: $CHANNEL_ALLURE_ID"
+      run: |
+         echo "Value of CHANNEL_ALLURE_ID: $CHANNEL_ALLURE_ID"
