@@ -11,6 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Call Composite Action
-        uses: ./.github/workflows/actions/test/actions.yml
+        uses: ./.github/workflows/actions/test
         with:
           channel_allure_id: "25486" 
