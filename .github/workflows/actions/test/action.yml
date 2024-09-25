@@ -9,7 +9,9 @@ runs:
   using: "composite"
   steps:
     - name: Set CHANNEL_ALLURE_ID
+      shell: bash
       run: echo "CHANNEL_ALLURE_ID=${{ inputs.channel_allure_id }}" >> $GITHUB_ENV
 
     - name: Print CHANNEL_ALLURE_ID
+      shell: bash
       run: echo "Value of CHANNEL_ALLURE_ID: $CHANNEL_ALLURE_ID"
