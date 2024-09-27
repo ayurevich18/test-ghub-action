@@ -1,0 +1,22 @@
+name: Send PR
+on:
+  pull_request:
+    types: [labeled]
+
+jobs:
+  send-mesage:
+    runs-on: ubuntu-latest
+    if: github.event.label.name == 'Review'
+    steps:
+    - name: Post to a Slack channel
+      id: slack
+      uses: slackapi/slack-github-action@v1.25.0
+      with:
+    # Slack channel id, channel name, or user id to post message.
+    # See also: https://api.slack.com/methods/chat.postMessage#channels
+    # You can pass in multiple channels to post to by providing a comma-delimited list of channel IDs.
+       channel-id: 'C03257AQ1S8'
+    # For posting a simple plain text message
+       slack-message: "<!subteam^S025YUHS412>\n *Review requested by:* ${{ github.actor }} \n *title:* ${{ github.event.pull_request.title }} ( ▲${{ github.event.pull_request.additions }}  ▼${{ github.event.pull_request.deletions }}) \n *url: * https://github.com/${{ github.repository }}/pull/${{ github.event.pull_request.number }} \n"
+    env:
+      SLACK_BOT_TOKEN: ${{ secrets.TOKEN }}
